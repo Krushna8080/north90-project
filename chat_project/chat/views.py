@@ -5,6 +5,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Message
 from django.db import models 
+
+# yourapp/templatetags/form_tags.py
+from django import template
+register = template.Library()
+
+@register.filter(name='addclass')
+def addclass(field, css):
+    return field.as_widget(attrs={"class": css})
+
 @login_required
 def chat_view(request, user_id=None):
     users = User.objects.exclude(id=request.user.id)

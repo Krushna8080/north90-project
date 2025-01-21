@@ -2,18 +2,26 @@ import json
 from time import timezone
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
+# yourapp/templatetags/form_tags.py
+from django import template
+register = template.Library()
+
+@register.filter(name='addclass')
+def addclass(field, css):
+    return field.as_widget(attrs={"class": css})
+
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-     self.room_name = ...
-     self.room_group_name = f"chat_{self.room_name}"
+      self.user = self.scope["user"]  # Ensure the user is correctly authenticated
+      self.room_group_name = f"chat_{self.user.id}"
+      await self.channel_layer.group_add(
+          self.room_group_name,
+          self.channel_name
+      )  
+      await self.accept()
+      print(f"WebSocket connected for user: {self.user}")
 
-     if self.scope["user"].is_authenticated:
-        await self.channel_layer.group_add(self.room_group_name, self.channel_name)
-        await self.accept()
-        print(f"WebSocket connected for user: {self.scope['user']}")
-     else:
-        await self.close()
 
     async def disconnect(self, close_code):
         # Remove this channel from the room group
