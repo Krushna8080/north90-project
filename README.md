@@ -87,6 +87,6 @@ aws lambda create-function --function-name FunctionName \
 
 Frontend  Hosted on PythonAnywhere or AWS.
 Accessible URL:https://krushna123a.pythonanywhere.com/static/
-
+Django Chatapp-https://north90-project.onrender.com/login/
 AWS Lambda Functions:
 Deployed and accessible via AWS Console or CLI.
