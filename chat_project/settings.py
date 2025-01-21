@@ -137,14 +137,17 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ASGI_APPLICATION = 'chat_project.asgi.application'
+# settings.py
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('red-c6na6rjru51t7lilgs3g', 6379)],
+            'hosts': [('red-cu81fg1u0jms73c35up0', 6379)],
         },
     },
 }
+
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'

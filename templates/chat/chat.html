@@ -99,7 +99,7 @@
                         chatSocket.close();
                     }
 
-                    chatSocket = new WebSocket(`ws://127.0.0.1:8001/ws/chat/${selectedUserId}/`);
+                    chatSocket = new WebSocket(`ws://north90-project.onrender.com/ws/chat/${selectedUserId}/`);
 
                     chatSocket.onopen = function () {
                         console.log(`WebSocket connected to chat with user ID: ${selectedUserId}`);
