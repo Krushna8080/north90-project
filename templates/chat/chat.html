@@ -162,6 +162,7 @@
                 chatForm.addEventListener('submit', function (e) {
                     e.preventDefault();
                     const message = chatMessage.value.trim();
+                
 
                     if (message) {
                         chatSocket.send(JSON.stringify({
