@@ -8,13 +8,9 @@ from chat import routing
 # Add these lines before any other Django imports
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chat_project.settings')
 django_asgi_app = get_asgi_application()
-# yourapp/templatetags/form_tags.py
-from django import template
-register = template.Library()
 
-@register.filter(name='addclass')
-def addclass(field, css):
-    return field.as_widget(attrs={"class": css})
+
+
 
 application = ProtocolTypeRouter({
     "http": django_asgi_app,
